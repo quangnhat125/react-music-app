@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.notification::after {
+  right: -5px;
+  top: -4px;
+  content: "2";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  background-color: #ea605e;
+  border-radius: 50%;
+  font-weight: 800;
+  border: 2px solid #1d1d1d;
+}
+
+.search-bar::after{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 96%;
+    height: 100%;
+    bottom: -9px;
+    left: calc(50% - 48%);
+    border-radius: 20px;
+    border: 2px solid #1d1d1d;
+    background-color: #fbf8f2;
+    transition: 0.15s ease;
+}
+
