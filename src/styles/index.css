@@ -34,3 +34,17 @@
     transition: 0.15s ease;
 }
 
+.card-list::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 95%;
+    height: 100%;
+    bottom: -9px;
+    left: calc(50% - 47.5%);
+    border-radius: 20px;
+    border: 2px solid #1d1d1d;
+    background-color: #f8e0b1;
+}
+
