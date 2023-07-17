@@ -1,7 +1,6 @@
-import { BsSearch } from "react-icons/bs";
 import { useState, useEffect } from "react";
 const NavBar = ({ tabSelected, setTabSelected }) => {
-  console.log("setTabSelected", setTabSelected);
+
   const menuList = [
     {
       id: 1,
@@ -20,14 +19,10 @@ const NavBar = ({ tabSelected, setTabSelected }) => {
       name: "Artists",
     },
   ];
-
-  const handleClick = (id) => {
-    this.setTabSelected(id);
-  };
+  
   useEffect(() => {
-    console.log("11");
-    // setTabSelected(tabSelected);
-  }, [tabSelected]);
+    setTabSelected(menuList[0]);
+  }, [menuList]);
 
   console.log("menuList", menuList);
   return (

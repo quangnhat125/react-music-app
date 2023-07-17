@@ -18,8 +18,8 @@ function App() {
             <Header />
             <Title />
             <Search />
-            <CardList />
             <NavBar tabSelected={tabSelected} setTabSelected={setTabSelected} />
+            <CardList />
             <Footer />
           </Layout>
         </div>

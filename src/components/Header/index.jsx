@@ -16,7 +16,7 @@ const Header = () => {
           <button className='mr-[1rem] cursor-pointer notification relative'>
             <AiOutlineBell className='text-[1.75rem] color-[#454545]'/>  
           </button>
-          <button className="flex justify-center items-center w-[48px] h-[48px] rounded-[15px] border-[3px] border-[#fff] p-0 overflow-hidden cursor-pointer shadow-custom1">
+          <button className="flex justify-center items-center w-[48px] h-[48px] rounded-[15px] border-[3px] border-[#fff] p-0 overflow-hidden cursor-pointer shadow-custom1 hover:transform translate-y-4px">
             <img className="rounded-[15px]" src="https://assets.codepen.io/285131/pexels-photo-838875.jpeg" />
           </button>
         </div>
