@@ -1,9 +1,23 @@
 import { AiFillPlayCircle } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+import { updateTabSelected } from "../../App/slice/tabSlice";
+
 const CardList = () => {
+  const tabSelected = useSelector((state) => state.tab.test);
+  const content = useSelector((state) => state.tab.tab);
+  const contentSelected = content.filter(
+    (content) => content.id === tabSelected
+  );
+  const dispatch = useDispatch();
+
+  const setTabSelected = (e) => {
+    dispatch(updateTabSelected(e));
+  };
+
   return (
     <>
       <div className="flex justify-between gap-[10px] mt-[24px] py-[32px] px-[8px]">
-        <div className="relative border-[2px] border-[#1d1d1d] rounded-[20px] bg-[#fff] p-[8px] w-[170px] rotate-[-3deg] card-list transform hover:translate-y-3 transition duration-1500 ease-out ">
+        <div className="relative border-[2px] border-[#1d1d1d] rounded-[20px] bg-[#fff] p-[8px] w-[170px] rotate-[-3deg] transform hover:translate-y-3 transition duration-1500 ease-out ">
           <div className="absolute left-[86px] top-[20px] w-[12px] h-[12px] bg-[#1d1d1d] rounded-full shadow-custom2 z-1 rotate-[3deg]">
             <div className="w-[12px] h-[12px] bg-[#1d1d1d] rounded-full z-1 relative top-[-44px]"></div>
             <div className="relative w-[6px] bg-[#fff] h-[50px] border-[1px] border-[#1d1d1d] rounded-[99rem] bottom-[52px] left-[3px]"></div>
@@ -16,14 +30,14 @@ const CardList = () => {
           </div>
           <div>
             <div className="flex justify-between items-center px-[8px] pt-[12px]">
-              <span>20 Songs</span>
+              <span>{contentSelected[0].content[0].songs}</span>
               <button>
                 <AiFillPlayCircle className="w-[30px] h-[30px]" />
               </button>
             </div>
             <div>
               <span className="text-base font-semibold mt-[4px] px-[8px] pb-[8px]">
-                Alan Walker
+              {contentSelected[0].content[0].name}
               </span>
             </div>
           </div>
@@ -41,14 +55,14 @@ const CardList = () => {
           </div>
           <div>
             <div className="flex justify-between items-center px-[8px] pt-[12px]">
-              <span>20 Songs</span>
+              <span>{contentSelected[0].content[1].songs}</span>
               <button>
                 <AiFillPlayCircle className="w-[30px] h-[30px]" />
               </button>
             </div>
             <div>
               <span className="text-base font-semibold mt-[4px] px-[8px] pb-[8px]">
-                Alan Walker
+              {contentSelected[0].content[1].name}
               </span>
             </div>
           </div>

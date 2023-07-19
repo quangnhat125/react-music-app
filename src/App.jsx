@@ -6,22 +6,24 @@ import Search from "./components/Search";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import CardList from "./components/CardList";
+import { store } from "./App/store";
+import { Provider } from "react-redux";
 
 function App() {
-  const [tabSelected, setTabSelected] = useState(1);
-
   return (
     <>
       <div>
         <div>
-          <Layout>
-            <Header />
-            <Title />
-            <Search />
-            <NavBar tabSelected={tabSelected} setTabSelected={setTabSelected} />
-            <CardList />
-            <Footer />
-          </Layout>
+          <Provider store={store}>
+            <Layout>
+              <Header />
+              <Title />
+              <Search />
+              <NavBar />
+              <CardList />
+              <Footer />
+            </Layout>
+          </Provider>
         </div>
       </div>
     </>
