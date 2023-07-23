@@ -8,8 +8,17 @@ import Footer from "./components/Footer";
 import CardList from "./components/CardList";
 import { store } from "./App/store";
 import { Provider } from "react-redux";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from '@cloudinary/react';
+import Waveform from './components/Ultils/Waveform';
 
 function App() {
+  const cld = new Cloudinary({ cloud: { cloudName: 'dnimmdew4' } });
+  const myImage = cld.image("cld-sample-5").format("png").toURL();
+  const myVideo = cld.video("cld-sample-audio").toURL();
+
+
+  console.log("----------", myVideo);
   return (
     <>
       <div>
@@ -20,7 +29,8 @@ function App() {
               <Title />
               <Search />
               <NavBar />
-              <CardList />
+              <CardList myImage={myImage} myVideo={myVideo} Waveform={<Waveform />} />
+              <Waveform url={myVideo}/>
               <Footer />
             </Layout>
           </Provider>

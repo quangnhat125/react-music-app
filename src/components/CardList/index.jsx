@@ -1,8 +1,10 @@
+import { useState, useEffect } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTabSelected } from "../../App/slice/tabSlice";
+import useSound from 'use-sound';
 
-const CardList = () => {
+const CardList = ({ myImage, myVideo }) => {
   const tabSelected = useSelector((state) => state.tab.test);
   const content = useSelector((state) => state.tab.tab);
   const contentSelected = content.filter(
@@ -14,6 +16,23 @@ const CardList = () => {
     dispatch(updateTabSelected(e));
   };
 
+  console.log("myVideo", useSound(myVideo))
+  const [play] = useSound(myVideo);
+
+  useEffect(() => {
+    const handleClick = () => {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const audioContext = new AudioContext();
+      audioContext.resume();
+      play();
+    };
+    console.log("0-0-0")
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="flex justify-between gap-[10px] mt-[24px] py-[32px] px-[8px]">
@@ -24,7 +43,7 @@ const CardList = () => {
           </div>
           <div className="overflow-hidden rounded-[15px] aspect-[4/3]">
             <img
-              src="https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg"
+              src={myImage}
               className="w-[100%]"
             />
           </div>
@@ -37,7 +56,7 @@ const CardList = () => {
             </div>
             <div>
               <span className="text-base font-semibold mt-[4px] px-[8px] pb-[8px]">
-              {contentSelected[0].content[0].name}
+                {contentSelected[0].content[0].name}
               </span>
             </div>
           </div>
@@ -62,7 +81,7 @@ const CardList = () => {
             </div>
             <div>
               <span className="text-base font-semibold mt-[4px] px-[8px] pb-[8px]">
-              {contentSelected[0].content[1].name}
+                {contentSelected[0].content[1].name}
               </span>
             </div>
           </div>
@@ -81,7 +100,9 @@ const CardList = () => {
             <div className="ml-[8px] grow">
               <div className="px-[8px] pt-[12px]">
                 <span className="font-bold">Marshello</span>
-                <button></button>
+                <button onClick={play}>
+                  <AiFillPlayCircle className="w-[30px] h-[30px]" />
+                </button>
               </div>
               <h2 className="flex justify-between items-center text-[#5f5f5f] mt-[2.2px] px-[8px] pb-[8px]">
                 Hate on other side<span>3:40</span>
